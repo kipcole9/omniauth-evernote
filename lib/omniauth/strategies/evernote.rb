@@ -12,26 +12,27 @@ module OmniAuth
         :authorize_path => '/OAuth.action'
       }
 
-      uid { raw_info.id }
-
-      info do
-        {
-          'name' => raw_info.name,
-          'nickname' => raw_info.username,
-        }
-      end
-
-      extra do
-        { :raw_info => raw_info }
-      end
-
-      def raw_info
-        @raw_info ||= begin
-          user_store_url = consumer.site + '/edam/user'
-          client = ::Evernote::Client.new(::Evernote::EDAM::UserStore::UserStore::Client, user_store_url, {})
-          client.getUser(access_token.token)
-        end
-      end
+      # FIXME: This code doesn't reflect the current Evernote API 
+      # uid { raw_info.id }
+      # 
+      # info do
+      #   {
+      #     'name' => raw_info.name,
+      #     'nickname' => raw_info.username,
+      #   }
+      # end
+      # 
+      # extra do
+      #   { :raw_info => raw_info }
+      # end
+      # 
+      # def raw_info
+      #   @raw_info ||= begin
+      #     user_store_url = consumer.site + '/edam/user'
+      #     client = ::Evernote::Client.new(::Evernote::EDAM::UserStore::UserStore::Client, user_store_url, {})
+      #     client.getUser(access_token.token)
+      #   end
+      # end
     end
   end
 end
