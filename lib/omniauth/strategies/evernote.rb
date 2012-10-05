@@ -1,5 +1,5 @@
 require 'omniauth/strategies/oauth'
-require 'evernote'
+# require 'evernote'
 
 module OmniAuth
   module Strategies
